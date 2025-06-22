@@ -1,17 +1,17 @@
-import "./styles.css";
-import { useState, useEffect } from "react";
+import './styles.css'
+import { useState, useEffect } from 'react'
 
-import TopSection from "./components/TopSection";
-import BottomSection from "./components/BottomSection";
+import TopSection from './components/TopSection'
+import BottomSection from './components/BottomSection'
 
 export default function App() {
-  const [playerName, setPlayerName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [playerName, setPlayerName] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setSubmitted(true);
-    setPlayerName((prevName) => prevName.trim() + " The King");
+    e.preventDefault()
+    setSubmitted(true)
+    setPlayerName((prevName) => prevName.trim() + ' The King')
   }
 
   /* Challenge
@@ -37,11 +37,17 @@ export default function App() {
     <form className="form" onSubmit={handleSubmit}>
       <TopSection submitted={submitted} />
 
-      {/*-----Input'unuz burada olacak----------*/}
-
-      {/*-----Input'unuz burada olacak----------*/}
-
+      <input
+        className="name-input"
+        type="text"
+        maximum="16"
+        placeholder="Karakterinizin Adını Girin"
+        required
+        value={playerName}
+        onChange={(e) => setPlayerName(e.target.value)}
+        disabled={submitted}
+      />
       <BottomSection submitted={submitted} playerName={playerName} />
     </form>
-  );
+  )
 }
